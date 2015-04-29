@@ -3,6 +3,8 @@
 #include <iostream>
 #include <stdio.h>
 #include <algorithm> // STL algorithms
+#include <array>
+#include <vector>
 
 using namespace std;
 
@@ -29,17 +31,12 @@ int main(int argc, char *argv[])
     cout<<section_name<<'\n';
     cout<<section_uline<<'\n';
 
-    char set_array[][20] = {
-        "xxxxx",
-        "union" };
+    vector<string> set_array = {
+        "param1",
+        "param2" };
 
-//    qDebug()<<sizeof set_array;
-
-    void fi(set_array)
-    {
-        for (int i = 0; set_array[i]!=0; ++i)
-            cout<<i<<" - "<<set_array[i];
-    }
+    for (int i = 0; i<set_array.size(); ++i)
+        cout<<i<<" - "<<set_array[i]<<'\n';
 
 
     /* ------------------
@@ -66,10 +63,11 @@ int main(int argc, char *argv[])
 
     /* --------- */
 
-    return a.exec();
+//    return a.exec();
+    return 0;
 
 //    int status = 0;
-    return exit(0);
+//    void exit(0);
 
 
 }
