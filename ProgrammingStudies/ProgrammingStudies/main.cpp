@@ -1,10 +1,14 @@
 #include <QCoreApplication>
 #include <QDebug>
 #include <iostream>
-#include <stdio.h>
+#include "stdio.h"
 #include <algorithm> // STL algorithms
-#include <array>
+//#include <array>
 #include <vector>
+#include "../src/iocontents.h"
+#include "../src/chapter.h"
+#include <unistd.h>
+#include <term.h>
 
 using namespace std;
 
@@ -12,31 +16,43 @@ int main(int argc, char *argv[])
 {
     QCoreApplication a(argc, argv);
 
-    /* ----------------------------
-     *  */
+    /* START GUIDE THROUGH CONTENT
+     * (function) content_guide():
+     * -displays book title,
+     * -asks user for display choice
+    */
 
+    iocontents main_guide;
+    main_guide.content_guide();
+
+
+
+
+    chapter one;
+    one.show_chapter_structure ("something");
 
     /* ----------------------------
      * STL ALGORITHMS [ch32:p927] */
 
     string chapter_name = "STL ALGORITHMS [ch32:p927]";
     string chapter_uline(chapter_name.size(),'=');
-    cout<<chapter_name<<'\n';
-    cout<<chapter_uline<<'\n';
+    cout<<chapter_name<<"\n";
+    cout<<chapter_uline<<"\n";
 
     /* -----------------------
      * SET ALGORITHMS [p947] */
     string section_name = "SET ALGORITHMS [p947]";
     string section_uline(section_name.size(),'-');
-    cout<<section_name<<'\n';
-    cout<<section_uline<<'\n';
+    cout<<section_name<<"\n";
+    cout<<section_uline<<"\n";
 
     vector<string> set_array = {
         "param1",
         "param2" };
 
-    for (int i = 0; i<set_array.size(); ++i)
-        cout<<i<<" - "<<set_array[i]<<'\n';
+    unsigned int i;
+    for (i = 0; i<set_array.size(); ++i)
+        cout<<i<<" - "<<set_array[i]<<"\n";
 
 
     /* ------------------
@@ -54,9 +70,8 @@ int main(int argc, char *argv[])
     qDebug()<<sizeof v; // bitsize
     qDebug()<<sizeof p1;
 
-    int i;
     for (i=0; i!=4; ++i) {
-        cout << v[i] <<'\n';
+        cout << v[i] <<"\n";
     }
 
 
