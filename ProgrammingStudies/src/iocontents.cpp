@@ -78,6 +78,9 @@ int iocontents::ask_user_display_choice()
             cout<<"Chosen: "<<cchoice<<"\n";
             ctries;
 
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
         default:
             qDebug()<<"Answer 3: "<<answer;
