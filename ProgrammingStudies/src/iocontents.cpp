@@ -50,7 +50,6 @@ void iocontents::content_guide()
 int iocontents::ask_user_display_choice()
 {
     int ctries=1;
-//    int stries=1;
     int cchoice=-1;
 
     while (ctries<4)
@@ -62,33 +61,27 @@ int iocontents::ask_user_display_choice()
         switch (answer){
         case 'y':
             cchoice = 1;
-<<<<<<< Updated upstream
             qDebug()<<"Answer 1: "<<answer;
             qDebug()<<"Chosen: "<<cchoice;
+            ctries=4;
+            qDebug()<<ctries;
+            break;
         case 'n':
             cchoice = 0;
             qDebug()<<"Answer 2: "<<answer;
             qDebug()<<"Chosen: "<<cchoice;
-=======
             cout<<"Chosen: "<<cchoice<<"\n";
             ctries=4;
-
-        case 'n':
-            cchoice = 0;
-            cout<<"Chosen: "<<cchoice<<"\n";
-            ctries;
-
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
+            qDebug()<<ctries;
+            break;
         default:
             qDebug()<<"Answer 3: "<<answer;
             cout<<"choose y or n...\n";
             ++ctries;
+            qDebug()<<ctries;
         }
 
-        qDebug()<<++ctries;
+        qDebug()<<"ctries:"<<ctries;
 
         if (cchoice==1 || cchoice==0)
         {
