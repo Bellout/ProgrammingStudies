@@ -62,12 +62,23 @@ int iocontents::ask_user_display_choice()
         switch (answer){
         case 'y':
             cchoice = 1;
+<<<<<<< Updated upstream
             qDebug()<<"Answer 1: "<<answer;
             qDebug()<<"Chosen: "<<cchoice;
         case 'n':
             cchoice = 0;
             qDebug()<<"Answer 2: "<<answer;
             qDebug()<<"Chosen: "<<cchoice;
+=======
+            cout<<"Chosen: "<<cchoice<<"\n";
+            ctries=4;
+
+        case 'n':
+            cchoice = 0;
+            cout<<"Chosen: "<<cchoice<<"\n";
+            ctries;
+
+>>>>>>> Stashed changes
         default:
             qDebug()<<"Answer 3: "<<answer;
             cout<<"choose y or n...\n";
