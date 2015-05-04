@@ -5,6 +5,7 @@
 #include <cstdlib>
 #include <unistd.h>
 #include <term.h>
+#include <QDebug>
 
 using namespace std;
 
@@ -58,21 +59,26 @@ int iocontents::ask_user_display_choice()
         char answer = 0;
         cin >> answer;
 
-
         switch (answer){
         case 'y':
             cchoice = 1;
-            cout<<"Chosen: "<<cchoice<<"\n";
+            qDebug()<<"Answer 1: "<<answer;
+            qDebug()<<"Chosen: "<<cchoice;
         case 'n':
             cchoice = 0;
-            cout<<"Chosen: "<<cchoice<<"\n";
+            qDebug()<<"Answer 2: "<<answer;
+            qDebug()<<"Chosen: "<<cchoice;
         default:
+            qDebug()<<"Answer 3: "<<answer;
             cout<<"choose y or n...\n";
             ++ctries;
         }
 
+        qDebug()<<++ctries;
+
         if (cchoice==1 || cchoice==0)
         {
+            qDebug()<<cchoice;
             break;
         }
     }
