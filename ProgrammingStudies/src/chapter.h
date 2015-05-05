@@ -1,5 +1,5 @@
-//#ifndef CHAPTER_H
-//#define CHAPTER_H
+#ifndef CHAPTER_H
+#define CHAPTER_H
 #include <iostream>
 #include <stdio.h>
 #include <vector>
@@ -11,21 +11,30 @@ class chapter
 
 private:
 
-    string sec, subsec, subsubsec;
-    string nsec, nsubsec, nsubsubsec;
+    // number of sections:
+    int nsec, nsubsec, nsubsubsec;
+    //
 
 public:
 
-    chapter();
+    int    nchp; // chapter number
+    string name; // chapter name
+    // string vectors of section and subsections
+    vector<string> sec_nms, subsec_nms, subsubsecnms;
+
+    // chapter class constructor
+    chapter(int num, string tlt, vector<string> secs);
+
+    // chapter class destructor
     ~chapter();
 
-    void show_chapter_structure(string ss); // show chapter structure
-
+    // show chapter structure
+    void show_structure(string struct_depth);
 
 };
 
 
 
-//#endif // CHAPTER_H
+#endif // CHAPTER_H
 
 

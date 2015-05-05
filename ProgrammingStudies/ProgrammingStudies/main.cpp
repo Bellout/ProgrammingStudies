@@ -25,11 +25,18 @@ int main(int argc, char *argv[])
     iocontents main_guide;
     main_guide.content_guide();
 
+    /* ----------------------------
+     * CHAPTER OBJECT             */
 
+    int chp_number {1};
+    string chp_name {"one"};
+    vector<string> sections_1 {
+        "first subsection",
+        "param2" };
 
-
-    chapter one;
-    one.show_chapter_structure ("something");
+    chapter chapter_1 {chp_number, chp_name, sections_1};
+    chapter_1.show_structure("section");
+    
 
     /* ----------------------------
      * STL ALGORITHMS [ch32:p927] */
