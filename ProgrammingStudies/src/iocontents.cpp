@@ -54,17 +54,15 @@ int iocontents::ask_user_display_choice()
 
     while (ctries<4)
     {
-        cout<<"Display whole chapter list (y or n)?\n";
+        cout<<"Display chapter list (y or n)?\n";
         char answer = 0;
         cin >> answer;
 
         switch (answer){
         case 'y':
             cchoice = 1;
-            qDebug()<<"Answer 1: "<<answer;
-            qDebug()<<"Chosen: "<<cchoice;
-            ctries=4;
-            qDebug()<<ctries;
+//            display_chapters();
+
             break;
         case 'n':
             cchoice = 0;
