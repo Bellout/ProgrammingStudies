@@ -31,14 +31,16 @@ int main(int argc, char *argv[])
      * CHAPTER OBJECT             */
 
     int chp_number {1};
-    string chp_name {"one"};
-    vector<string> sec_nms {
+    QString chp_name {"one"};
+    QVector<QString> sec_nms {
         "first subsection",
         "second subsection" };
-    map<string, string> sec_map { 
+
+    QMap<QString, QString> sec_map { 
         {"1.1", "first subsection"},
         {"1.2", "second subsection"}
         };
+
     section section_1 {sec_nms, sec_map};
 
     chapter chapter_1 {chp_number, chp_name, section_1};
@@ -48,19 +50,19 @@ int main(int argc, char *argv[])
     /* ----------------------------
      * STL ALGORITHMS [ch32:p927] */
 
-    string chapter_name = "STL ALGORITHMS [ch32:p927]";
-    string chapter_uline(chapter_name.size(),'=');
+    QString chapter_name = "STL ALGORITHMS [ch32:p927]";
+    QString chapter_uline(chapter_name.size(),'=');
     cout<<chapter_name<<"\n";
     cout<<chapter_uline<<"\n";
 
     /* -----------------------
      * SET ALGORITHMS [p947] */
-    string section_name = "SET ALGORITHMS [p947]";
-    string section_uline(section_name.size(),'-');
+    QString section_name = "SET ALGORITHMS [p947]";
+    QString section_uline(section_name.size(),'-');
     cout<<section_name<<"\n";
     cout<<section_uline<<"\n";
 
-    vector<string> set_array = {
+    QVector<QString> set_array = {
         "param1",
         "param2" };
 

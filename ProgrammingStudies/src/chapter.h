@@ -1,8 +1,19 @@
 #ifndef CHAPTER_H
 #define CHAPTER_H
+//Qt
+#include <QCoreApplication>
+#include <QDebug>
+#include <QString>
+#include <QVector>
+#include <QMap>
+
+//STD
 #include <iostream>
 #include <stdio.h>
-#include <vector>
+// #include <vector>
+// #include <map>
+
+//LOCAL
 #include "section.h"
 #include "subsection.h"
 
@@ -23,20 +34,20 @@ public:
     int nchp;
 
     // chapter name
-    string name;
+    QString name;
 
     // section object
     section sec_vector;
 
     // chapter class constructor
-    chapter(int num, string tlt,
+    chapter(int num, QString tlt,
             section sec);
 
     // chapter class destructor
     ~chapter();
 
     // show chapter structure
-    void show_structure(string struct_depth);
+    void show_structure(QString struct_depth);
 
 };
 

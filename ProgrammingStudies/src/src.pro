@@ -9,11 +9,13 @@ HEADERS += \
     chapter.h \
     section.h \
     subsection.h \
-    iocontents.h
+    iocontents.h \
+    content.h
 
 SOURCES += \
     scripts.cpp \
     chapter.cpp \
     section.cpp \
     subsection.cpp \
-    iocontents.cpp
+    iocontents.cpp \
+    content.cpp

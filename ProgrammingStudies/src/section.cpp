@@ -1,7 +1,17 @@
+//Qt
+#include <QCoreApplication>
+#include <QDebug>
+#include <QString>
+#include <QVector>
+#include <QMap>
+
+//STD
 #include <iostream>
 #include <stdio.h>
-#include <vector>
-#include <map>
+// #include <vector>
+// #include <map>
+
+//LOCAL
 #include "section.h"
 
 section::section()
@@ -9,18 +19,18 @@ section::section()
 
 }
 
-section::section(map<string,string> sec)
+section::section(QMap<QString,QString> sec)
 {
 
 }
 
-section::section(vector<string> sec)
+section::section(QVector<QString> sec)
 {
 
 }
 
-section::section(vector<string> snms,
-                 map<string, string> smap)
+section::section(QVector<QString> snms,
+            QMap<QString, QString> smap)
 {
 
     sec_nms = snms;

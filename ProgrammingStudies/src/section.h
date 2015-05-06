@@ -1,9 +1,20 @@
 #ifndef SECTION_H
 #define SECTION_H
+
+//Qt
+#include <QCoreApplication>
+#include <QDebug>
+#include <QString>
+#include <QVector>
+#include <QMap>
+
+//STD
 #include <iostream>
 #include <stdio.h>
-#include <vector>
-#include <map>
+// #include <vector>
+// #include <map>
+
+//LOCAL
 #include "subsection.h"
 
 using namespace std;
@@ -16,13 +27,13 @@ public:
     int nsec;
 
     // section name
-    string name;
+    QString name;
 
     // map of section content
-    map<string,string> sec_map;
+    QMap<QString,QString> sec_map;
 
     // string vector of section content
-    vector<string> sec_nms;
+    QVector<QString> sec_nms;
 
     // subsection object
     subsection subsec_vector;
@@ -31,15 +42,15 @@ public:
     section();
 
     // section class constructor (using map)
-    section(map<string,string> sec);
+    section(QMap<QString,QString> sec);
 
     // section class constructor (using vector)
-    section(vector<string> sec);
+    section(QVector<QString> sec);
 
     // section class constructor
     //(using both vector and map)
-    section(vector<string> snms,
-            map<string, string> smap);
+    section(QVector<QString> snms,
+            QMap<QString, QString> smap);
 
     // chapter class destructor
     ~section();
