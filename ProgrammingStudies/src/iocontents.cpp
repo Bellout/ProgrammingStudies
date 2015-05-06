@@ -62,7 +62,7 @@ int iocontents::ask_user_display_choice()
         case 'y':
             cchoice = 1;
 //            display_chapters();
-
+            ctries=4;
             break;
         case 'n':
             cchoice = 0;
@@ -79,16 +79,16 @@ int iocontents::ask_user_display_choice()
             qDebug()<<ctries;
         }
 
-        qDebug()<<"ctries:"<<ctries;
+        // qDebug()<<"ctries:"<<ctries;
 
-        if (cchoice==1 || cchoice==0)
-        {
-            qDebug()<<cchoice;
-            break;
-        }
+        // if (cchoice==1 || cchoice==0)
+        // {
+        //     qDebug()<<cchoice;
+        //     break;
+        // }
     }
 
-    cout<<"Returning: "<<cchoice<<"\n";
+    // cout<<"Returning: "<<cchoice<<"\n";
     return cchoice;
 
 //    while (stries<4)

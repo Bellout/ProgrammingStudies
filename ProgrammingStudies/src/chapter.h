@@ -3,6 +3,8 @@
 #include <iostream>
 #include <stdio.h>
 #include <vector>
+#include "section.h"
+#include "subsection.h"
 
 using namespace std;
 
@@ -17,13 +19,18 @@ private:
 
 public:
 
-    int    nchp; // chapter number
-    string name; // chapter name
-    // string vectors of section and subsections
-    vector<string> sec_nms, subsec_nms, subsubsecnms;
+    // chapter number
+    int nchp;
+
+    // chapter name
+    string name;
+
+    // section object
+    section sec_vector;
 
     // chapter class constructor
-    chapter(int num, string tlt, vector<string> secs);
+    chapter(int num, string tlt,
+            section sec);
 
     // chapter class destructor
     ~chapter();

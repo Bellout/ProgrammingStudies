@@ -7,6 +7,8 @@
 #include <vector>
 #include "../src/iocontents.h"
 #include "../src/chapter.h"
+#include "../src/section.h"
+#include "../src/subsection.h"
 #include <unistd.h>
 #include <term.h>
 
@@ -30,11 +32,16 @@ int main(int argc, char *argv[])
 
     int chp_number {1};
     string chp_name {"one"};
-    vector<string> sections_1 {
+    vector<string> sec_nms {
         "first subsection",
-        "param2" };
+        "second subsection" };
+    map<string, string> sec_map { 
+        {"1.1", "first subsection"},
+        {"1.2", "second subsection"}
+        };
+    section section_1 {sec_nms, sec_map};
 
-    chapter chapter_1 {chp_number, chp_name, sections_1};
+    chapter chapter_1 {chp_number, chp_name, section_1};
     chapter_1.show_structure("section");
     
 
