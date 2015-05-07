@@ -1,22 +1,32 @@
 #ifndef IOCONTENTS_H
 #define IOCONTENTS_H
 
+//Qt
+#include <QDebug>
+#include <QProcess>
+
 class iocontents
 {
 private:
-
-//    bool show;
 
 public:
 
     iocontents();
     ~iocontents();
 
-    void content_guide();
-    void show_chapter_list(bool show);
-    void ClearScreen();
+    // MAIN FUNCTION
+    void showContentGuide();
+    // AUX FUNCTIONS
+    void clearScreen();
+    void showBookTitle();
+    void showAllChaptersList();
 
-    int ask_user_display_choice();
+
+
+
+    void show_chapter_list(bool show);
+
+    void askIfChapterDisplay();
 
 //    void show_chapter_list(show);
 

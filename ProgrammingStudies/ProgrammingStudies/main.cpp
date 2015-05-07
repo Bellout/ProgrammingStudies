@@ -1,16 +1,20 @@
+//Qt
 #include <QCoreApplication>
 #include <QDebug>
+
+//STD
 #include <iostream>
 #include "stdio.h"
 #include <algorithm> // STL algorithms
-//#include <array>
 #include <vector>
+#include <unistd.h>
+#include <term.h>
+
+//LOCAL
 #include "../src/iocontents.h"
 #include "../src/chapter.h"
 #include "../src/section.h"
 #include "../src/subsection.h"
-#include <unistd.h>
-#include <term.h>
 
 using namespace std;
 
@@ -18,17 +22,29 @@ int main(int argc, char *argv[])
 {
     QCoreApplication a(argc, argv);
 
-    /* START GUIDE THROUGH CONTENT
+    /* ----------------------------
+     * MAIN VARIABLES             */
+
+    // IO TO CONSOLE
+    QTextStream stream_in(stdin);
+
+    /* ----------------------------
+     * CREATE MAIN GUIDE OBJECT:
+     * DECIDE WHICH TYPE OF VIEWER
+     * OBJECT TO CREATE
      * (function) content_guide():
      * -displays book title,
      * -asks user for display choice
     */
 
+    // CREATE MAIN GUIDE OBJECT
     iocontents main_guide;
-    main_guide.content_guide();
+    main_guide.showContentGuide();
 
-    /* ----------------------------
-     * CHAPTER OBJECT             */
+
+    /* ---------------------------
+     * CREATE VIEWER OBJECT OUT OF
+       CONTENT */
 
     int chp_number {1};
     QString chp_name {"one"};
@@ -52,23 +68,23 @@ int main(int argc, char *argv[])
 
     QString chapter_name = "STL ALGORITHMS [ch32:p927]";
     QString chapter_uline(chapter_name.size(),'=');
-    cout<<chapter_name<<"\n";
-    cout<<chapter_uline<<"\n";
+    qDebug()<<chapter_uline;
+    qDebug()<<chapter_name;
 
     /* -----------------------
      * SET ALGORITHMS [p947] */
     QString section_name = "SET ALGORITHMS [p947]";
     QString section_uline(section_name.size(),'-');
-    cout<<section_name<<"\n";
-    cout<<section_uline<<"\n";
+    qDebug()<<section_name;
+    qDebug()<<section_uline;
 
-    QVector<QString> set_array = {
-        "param1",
-        "param2" };
+    // QVector<QString> set_array = {
+    //     "param1",
+    //     "param2" };
 
-    unsigned int i;
-    for (i = 0; i<set_array.size(); ++i)
-        cout<<i<<" - "<<set_array[i]<<"\n";
+    // unsigned int i;
+    // for (i = 0; i<set_array.size(); ++i)
+    //     cout<<i<<" - "<<set_array[i]<<"\n";
 
 
     /* ------------------
@@ -86,9 +102,9 @@ int main(int argc, char *argv[])
     qDebug()<<sizeof v; // bitsize
     qDebug()<<sizeof p1;
 
-    for (i=0; i!=4; ++i) {
-        cout << v[i] <<"\n";
-    }
+    // for (i=0; i!=4; ++i) {
+    //     cout << v[i] <<"\n";
+    // }
 
 
 

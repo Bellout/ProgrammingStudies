@@ -1,9 +1,11 @@
 //Qt
 #include <QCoreApplication>
 #include <QDebug>
+#include <QTextStream>
 #include <QString>
 #include <QVector>
 #include <QMap>
+#include <QList>
 
 //STD
 #include <iostream>
@@ -32,10 +34,17 @@ void chapter::show_structure(QString struct_depth)
 {
     int    ctries {0};
 
+    // IO TO CONSOLE
+    QTextStream stream_in(stdin);
+
+    //QMAP AND KEY VECTOR
     QMap<QString, int> string_map = {
         {"section",    1},
         {"subsection",  2}
     };
+    QList<QString> keyQStringVector;
+    QString substring {"1."};
+
 
     qDebug() << "struct_depth = " << struct_depth;
 
@@ -62,23 +71,15 @@ void chapter::show_structure(QString struct_depth)
         // QMap VALUES
         // QMap< QString, QMap<QString, QString> > myQMap
 
-        for(auto const &it1 : sec_vector.sec_map.keys()) {
-//            qDebug()<<"it1.first = "<<it1.first;
-//            qDebug()<<"it1.second = "<<it1.second;
-            qDebug()<<"it1.second = "<<sec_vector.sec_map.keys(it1);
-
-        QVector<QString> keyQStringVector =
-        {sec_vector.sec_map.keys()};
+        foreach(QString key, sec_vector.sec_map.keys()){
+            if(key.contains(substring))
+                keyQStringVector.push_back(key);
+        }
         qDebug()<<keyQStringVector;
 
-//        keyQStringVector {}
-        // for(auto const &it2 : it1.second) {
-        //   // it2.first is the second key
-        //   // it2.second is the data
-        //   qDebug()<<"it2.first = "<<it2.first;
-        //   qDebug()<<"it2.second = "<<it2.second;
-        // }
-}
+        foreach(QString key, keyQStringVector){
+            qDebug()<<sec_vector.sec_map[key];
+        }
 
         ctries = 4;
         break;
@@ -91,7 +92,8 @@ void chapter::show_structure(QString struct_depth)
     default:
         qDebug()<<"choose display depth (section or "
               "subsection): ";
-        cin>>struct_depth;
+        struct_depth = stream_in.readLine();
+//        cin>>struct_depth;
         qDebug()<<"Chosen: "<<struct_depth;
         ++ctries;
     }

@@ -1,11 +1,23 @@
-#include "iocontents.h"
+//Qt
+#include <QDebug>
+#include <QProcess>
+#include <QTextStream>
+#include <QString>
+#include <QVector>
+#include <QMap>
+#include <QList>
+
+//STD
 #include <iostream>
 #include <stdio.h>
-#include <vector>
+// #include <vector>
 #include <cstdlib>
 #include <unistd.h>
 #include <term.h>
-#include <QDebug>
+
+//LOCAL
+#include "iocontents.h"
+
 
 using namespace std;
 
@@ -18,114 +30,112 @@ iocontents::~iocontents()
 
 }
 
-void iocontents::show_chapter_list(bool show)
+void iocontents::showAllChaptersList()
 {
 
 }
 
-void iocontents::content_guide()
+
+void iocontents::showContentGuide()
 {
-    /* ----------------------------
-     * DISPLAY BOOK TITLE */
 
-//    system("clear");
-
-    ClearScreen();
-
-    string book_title = "THE C++ PROGRAMING LANGUAGE, "
-                        "4ED [ch:1-44;p1347] -- "
-                        "BJARNE STROUSTRUP";
-    string book_uline(book_title.size(),'*');
-    cout<<"\n"<<book_uline<<"\n";
-    cout<<book_title<<"\n";
-    cout<<book_uline<<"\n\n";
+    clearScreen();
+    showBookTitle();
 
     /* ----------------------------
      * ASK USER FOR DISPLAY CHOICE */
-    int cchoice;
-    cchoice = ask_user_display_choice();
-
+    askIfChapterDisplay();
 }
 
-int iocontents::ask_user_display_choice()
-{
-    int ctries=1;
-    int cchoice=-1;
 
+void iocontents::askIfChapterDisplay()
+{
+    // LOCAL VARIABLES
+    int ctries=1;
+    QString answer = 0;
+
+    // IO TO CONSOLE
+    QTextStream stream_in(stdin);
+    QTextStream stream_out(stdout);
+
+    //QMAP AND KEY VECTOR
+    QMap<QString, int> answer_map = {
+        {"y",    1},
+        {"yes",  1},
+        {"n",  2},
+        {"no",  2}
+    };
+
+    // ASK FOR CHOICE
     while (ctries<4)
     {
-        cout<<"Display chapter list (y or n)?\n";
-        char answer = 0;
-        cin >> answer;
-
-        switch (answer){
-        case 'y':
-            cchoice = 1;
-//            display_chapters();
-            ctries=4;
-            break;
-        case 'n':
-            cchoice = 0;
-            qDebug()<<"Answer 2: "<<answer;
-            qDebug()<<"Chosen: "<<cchoice;
-            cout<<"Chosen: "<<cchoice<<"\n";
-            ctries=4;
-            qDebug()<<ctries;
-            break;
-        default:
-            qDebug()<<"Answer 3: "<<answer;
-            cout<<"choose y or n...\n";
-            ++ctries;
-            qDebug()<<ctries;
+        if(ctries==1){
+        stream_out<<"Display chapter list ('y' or 'n')?\n"<<flush;
         }
 
-        // qDebug()<<"ctries:"<<ctries;
+        qDebug()<<"(tries:"<<ctries<<"of 3)";
 
-        // if (cchoice==1 || cchoice==0)
-        // {
-        //     qDebug()<<cchoice;
-        //     break;
-        // }
+        if(ctries<4){
+            answer = stream_in.readLine();
+        }
+
+        // qDebug()<<answer;
+
+        switch (answer_map[answer]){
+
+        case 1:
+            showAllChaptersList();
+            ctries=4;
+            break;
+
+        case 2:
+            showAllChaptersList();
+            ctries=4;
+            break;
+
+        default:
+            ++ctries;
+            if(ctries<4){
+                stream_out<<
+                "You must choose 'y' or 'n'. "
+                "Try again...\n"<<flush;
+            }else{
+                stream_out<<
+                "You have tried too many "
+                "times. Displaying chapter "
+                "list.\n"<<flush;
+                showAllChaptersList();
+                ctries=4;
+            }
+
+        }
     }
-
-    // cout<<"Returning: "<<cchoice<<"\n";
-    return cchoice;
-
-//    while (stries<4)
-//    {
-//        cout<<"Display content of which chapter (#)?\n";
-//        char answer = 0;
-//        cin >> answer;
-
-//        switch (answer){
-//        case 'y':
-//            cchoice = 1;
-//        case 'n':
-//            cchoice = 0;
-//        default:
-//            cout<<"choose y or n...\n";
-//            ++stries;
-//    }
-
 }
 
-
-
-//void iocontents::ClearScreen()
-//{
-//    if (!cur_term)
-//    {
-//    int result;
-//    setupterm( NULL, STDOUT_FILENO, &result );
-//    if (result <= 0) return;
-//    }
-
-//    putp( tigetstr( "clear" ) );
-//}
-
-void iocontents::ClearScreen()
+void iocontents::showBookTitle()
 {
-    cout << string( 100, '\n' );
+    // IO TO CONSOLE
+    QTextStream stream_out(stdout);
+
+    /* ----------------------------
+     * DISPLAY BOOK TITLE */
+    QString book_title =
+            "THE C++ PROGRAMING LANGUAGE, "
+            "4ED [ch:1-44;p1347] -- "
+            "BJARNE STROUSTRUP";
+    QString book_uline(book_title.size(),'*');
+
+    stream_out<<"\n"<<book_uline<<"\n";
+    stream_out<<book_title<<"\n";
+    stream_out<<book_uline<<"\n\n";
+}
+
+void iocontents::clearScreen()
+{
+    // LINUX
+    QProcess::execute("clear");
+    // WINDOWS
+//    QProcess::execute("CLS");
 }
 
 
