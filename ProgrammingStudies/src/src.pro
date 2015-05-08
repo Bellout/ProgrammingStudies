@@ -10,7 +10,8 @@ HEADERS += \
     section.h \
     subsection.h \
     iocontents.h \
-    content.h
+    content.h \
+    contentslice.h
 
 SOURCES += \
     scripts.cpp \
@@ -18,4 +19,5 @@ SOURCES += \
     section.cpp \
     subsection.cpp \
     iocontents.cpp \
-    content.cpp
+    content.cpp \
+    contentslice.cpp

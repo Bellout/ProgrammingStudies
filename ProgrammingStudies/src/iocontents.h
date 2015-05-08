@@ -5,6 +5,9 @@
 #include <QDebug>
 #include <QProcess>
 
+//LOCAL
+#include "../src/contentslice.h"
+
 class iocontents
 {
 private:
@@ -21,14 +24,13 @@ public:
     void showBookTitle();
     void showAllChaptersList();
 
-
+    // TEST FUNCTIONS
+    void genericChoiceLoop(
+            contentSlice cSlice);
 
 
     void show_chapter_list(bool show);
-
     void askIfChapterDisplay();
-
-//    void show_chapter_list(show);
 
 };
 

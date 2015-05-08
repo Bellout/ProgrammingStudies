@@ -16,8 +16,8 @@
 #include <term.h>
 
 //LOCAL
-#include "iocontents.h"
-
+#include "../src/iocontents.h"
+#include "../src/contentslice.h"
 
 using namespace std;
 
@@ -45,6 +45,73 @@ void iocontents::showContentGuide()
     /* ----------------------------
      * ASK USER FOR DISPLAY CHOICE */
     askIfChapterDisplay();
+}
+
+
+void iocontents::genericChoiceLoop(
+        contentSlice cSlice)
+{
+    // SCOPE VARS: CONST
+    int ctries=1;
+    QString answer = 0;
+
+    // SCOPE VARS: IO TO CONSOLE
+    QTextStream stream_in(stdin);
+    QTextStream stream_out(stdout);
+
+    // SCOPE VARS: QMAP AND KEY VECTOR
+    QMap<QString, int> answer_map = {
+        {"y",    1},
+        {"yes",  1},
+        {"n",  2},
+        {"no",  2}
+    };
+
+    // GENERIC CHOICE LOOP
+    while (ctries<4)
+    {
+        if(ctries==1){
+        stream_out << "Display " << cSlice.getName()
+        << "list ('y' or 'n')?\n" << flush;
+        }
+
+        qDebug()<<"(tries:"<<ctries<<"of 3)";
+
+        if(ctries<4){
+            answer = stream_in.readLine();
+        }
+
+        // qDebug()<<answer;
+
+        switch (answer_map[answer]){
+
+        case 1:
+            showAllChaptersList();
+            ctries=4;
+            break;
+
+        case 2:
+            showAllChaptersList();
+            ctries=4;
+            break;
+
+        default:
+            ++ctries;
+            if(ctries<4){
+                stream_out<<
+                "You must choose 'y' or 'n'. "
+                "Try again...\n"<<flush;
+            }else{
+                stream_out<<
+                "You have tried too many "
+                "times. Displaying default"
+                "view.\n"<<flush;
+                showAllChaptersList();
+                ctries=4;
+            }
+
+        }
+    }
 }
 
 
@@ -112,6 +179,7 @@ void iocontents::askIfChapterDisplay()
     }
 }
 
+
 void iocontents::showBookTitle()
 {
     // IO TO CONSOLE
@@ -129,6 +197,7 @@ void iocontents::showBookTitle()
     stream_out<<book_title<<"\n";
     stream_out<<book_uline<<"\n\n";
 }
+
 
 void iocontents::clearScreen()
 {

@@ -15,6 +15,8 @@
 #include "../src/chapter.h"
 #include "../src/section.h"
 #include "../src/subsection.h"
+#include "../src/content.h"
+#include "../src/contentslice.h"
 
 using namespace std;
 
@@ -28,6 +30,10 @@ int main(int argc, char *argv[])
     // IO TO CONSOLE
     QTextStream stream_in(stdin);
 
+    // SET UP MAIN CONTENT
+    content main_content;
+    main_content.displayAllContent();
+
     /* ----------------------------
      * CREATE MAIN GUIDE OBJECT:
      * DECIDE WHICH TYPE OF VIEWER
@@ -39,11 +45,10 @@ int main(int argc, char *argv[])
 
     // CREATE MAIN GUIDE OBJECT
     iocontents main_guide;
-    main_guide.showContentGuide();
-
+    // main_guide.showContentGuide();
 
     /* ---------------------------
-     * CREATE VIEWER OBJECT OUT OF
+     * CREATE contentSlice OBJECT
        CONTENT */
 
     int chp_number {1};
@@ -56,6 +61,13 @@ int main(int argc, char *argv[])
         {"1.1", "first subsection"},
         {"1.2", "second subsection"}
         };
+
+
+    contentSlice all_chapters_slice {"all_chapters"};
+    qDebug() << "Slice name: " << all_chapters_slice.getName();
+    main_guide.genericChoiceLoop(all_chapters_slice);
+
+
 
     section section_1 {sec_nms, sec_map};
 

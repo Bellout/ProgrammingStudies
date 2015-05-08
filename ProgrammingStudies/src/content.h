@@ -1,20 +1,26 @@
 #ifndef CONTENT_H
 #define CONTENT_H
-#include "stdio.h"
-#include <map>
-#include <vector>
 
-using namespace std;
+//Qt
+#include <QCoreApplication>
+#include <QDebug>
+#include <QTextStream>
+#include <QString>
+#include <QVector>
+#include <QMap>
+#include <QList>
 
 class content
 {
+private:
+
+    QMap<QString, QString> main_map;
+
 public:
-
-//map<>
-
     content();
-
     ~content();
+
+    void displayAllContent();
 
 };
 

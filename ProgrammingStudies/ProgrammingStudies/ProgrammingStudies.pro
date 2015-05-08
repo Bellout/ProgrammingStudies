@@ -24,4 +24,6 @@ SOURCES += \
     ../src/chapter.cpp \
     ../src/section.cpp \
     ../src/subsection.cpp \
-    ../src/iocontents.cpp
+    ../src/iocontents.cpp \
+    ../src/content.cpp \
+    ../src/contentslice.cpp
